@@ -5,10 +5,15 @@ The web application will allow students to submit their functions and receive a 
 **Project Framework:** Flask is an open-source web development framework for building web applications in Python.
 
 **Project Features:**
+
 •	The files loaded from UI are placed in two separate folders (upload/students, uploads/Instructor)
+
 •	Python scripts are used for code implementation 
+
 •	Subprocess command is used to run files that provides the result after running the file.
+
 •	Check for any issue in the student code
+
 •	Identified manual test cases for positive and negative scenarios to enhance robustness of the application
 
 Flask
