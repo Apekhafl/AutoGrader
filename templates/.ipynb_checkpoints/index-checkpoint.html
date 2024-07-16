@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+         body {font-family: Arial, Helvetica, sans-serif;
+         background-image: url("https://c1.wallpaperflare.com/preview/663/811/778/blur-insubstantial-bright-luminescence.jpg");
+         background-size: cover;
+         }
+         * {box-sizing: border-box;}
+         h2{
+         Text-align:center;
+        font-size: 45px;
+         }
+         button{
+         border-radius: 22px;
+         transition-duration: 0.6s;
+         }
+         Button:hover{
+         border-radius: 42px;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+         }
+         .loginbuttons{
+        border: 3px solid #f1f1f1;  
+         }
+         /* Button used to open the contact form - fixed at the bottom of the page */
+         .student-button {
+        background-color: Green;
+        color: white;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 25px;
+        opacity: 0.8;
+        position: fixed;
+        top: 500px;
+        width: 180px;
+         }
+         .instructor-button {
+        background-color: Green;
+        color: white;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 25px;
+        opacity: 0.8;
+        position: fixed;
+        top: 300px;
+        width: 180px;
+         }
+         /* The popup form - hidden by default */
+         .form-popup {
+         display: none;
+         position: fixed;
+         top: 200px;
+         right: 100px;
+         border: 3px solid #f1f1f1;
+         z-index: 9;
+         }
+         /* Add styles to the form container */
+         .form-container {
+         max-width: 300px;
+         padding: 10px;
+         background-color: white;
+         }
+         /* Full-width input fields */
+         .form-container input[type=text], .form-container input[type=password] {
+         width: 100%;
+         padding: 15px;
+         margin: 5px 0 22px 0;
+         border: none;
+         background: #f1f1f1;
+         }
+         /* When the inputs get focus, do something */
+         .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+         background-color: #ddd;
+         outline: none;
+         }
+         /* Set a style for the submit/login button */
+         .form-container .btn {
+         background-color: green;
+         color: white;
+         padding: 16px 20px;
+         border: none;
+         cursor: pointer;
+         width: 100%;
+         margin-bottom:10px;
+         opacity: 0.8;
+         }
+         /* Add a red background color to the cancel button */
+         .form-container .cancel {
+         background-color: red;
+         }
+         /* Add some hover effects to buttons */
+         .form-container .btn:hover, .open-button:hover {
+         opacity: 1;
+         }
+        .multiline {
+        white-space: pre-wrap;
+        position: fixed;
+        font-size: 32px;
+        font-weight: bold;
+        left:220px;
+        top:350px
+        }
+      </style>
+   </head>
+   <body>
+      <h2 align="center">Welcome to Autograder</h2>
+      <p id="trail"></p>
+       <div class="multiline"> 
+                  Login as 
+           Instructor/Student
+       </div>
+      <div class="loginbuttons" align="center" >
+         <button class="student-button" onclick="openStudentForm()">Student</button>
+         <button class="instructor-button" onclick="openInstructorForm()">Instructor</button>
+      </div>
+      <div class="form-popup" id="StudentForm">
+         <form action="/action_page.php" class="form-container">
+            <h1>Student Login</h1>
+            <label ><b>Id</b></label>
+            <input type="text" placeholder="Enter id" id="ids" required>
+            <label ><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psws" required>
+            <p id = "wrongS" style="color:red;"></p>
+            <button type="submit" class="btn" onclick="loginS()">Login</button>
+            <button type="button" class="btn cancel" onclick="closeStudentForm()">Close</button>
+         </form>
+      </div>
+      <div class="form-popup" id="InstructorForm">
+         <form action="/action_page.php" class="form-container">
+            <h1>Instructor Login</h1>
+            <label ><b>Id</b></label>
+            <input type="text" placeholder="Enter id" id="idi" required>
+            <label ><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="pswi" required>
+            <p id = "wrongI" style="color:red;"></p>
+            <button type="submit" class="btn" onclick = "loginI()" >Login</button>
+            <button type="button" class="btn cancel" onclick="closeInstructorForm()">Close</button>
+         </form>
+      </div>
+      <script>
+         function openStudentForm() {
+           document.getElementById("idi").value = "";
+           document.getElementById("pswi").value = "";
+           document.getElementById("wrongI").innerHTML = "";
+           document.getElementById("InstructorForm").style.display = "none";
+           document.getElementById("StudentForm").style.display = "block";
+         }
+         
+         function closeStudentForm() {
+           document.getElementById("wrongS").innerHTML = "";
+           document.getElementById("ids").value = "";
+           document.getElementById("psws").value = "";
+           document.getElementById("StudentForm").style.display = "none";
+         }
+         function openInstructorForm() {
+           document.getElementById("wrongS").innerHTML = "";
+           document.getElementById("ids").value = "";
+           document.getElementById("psws").value = "";
+           document.getElementById("StudentForm").style.display = "none";
+           document.getElementById("InstructorForm").style.display = "block";
+         }
+         
+         function closeInstructorForm() {
+           document.getElementById("idi").value = "";
+           document.getElementById("pswi").value = "";
+           document.getElementById("wrongI").innerHTML = "";
+           document.getElementById("InstructorForm").style.display = "none";
+         }
+         
+         function loginS(){
+           let id = ["12345"];
+           let psd = ["@12345"];
+           let x = document.getElementById("ids").value;
+           let y = document.getElementById("psws").value;
+           for(let i = 0; i <= id.length; i++){
+             if(id[i] == x && psd[i] == y){
+               document.getElementById("wrongS").innerHTML = "";
+               //DIVERT LINK HERE
+               // open("{url_for('student_view')}");
+                window.location.replace("{{ url_for('student_view') }}");
+               document.getElementById("ids").value = "";
+               document.getElementById("psws").value = "";
+               //document.getElementById("trail").innerHTML = x;
+               break;
+             }
+             document.getElementById("wrongS").innerHTML = "Id or Password is not correct.";
+           }
+         }
+         
+         function loginI(){
+           let id = ["admin","admin2"];
+           let psd = ["Admin@123","12345"];
+           let x = document.getElementById("idi").value;
+           let y = document.getElementById("pswi").value;
+           for(let i = 0; i <= id.length; i++){
+             if(id[i] == x && psd[i] == y){
+               document.getElementById("wrongS").innerHTML = "";
+               //DIVERT LINK HERE
+               // open("{{ url_for('instructor_view') }}");
+                window.location.replace("{{ url_for('instructor_view') }}");
+               document.getElementById("idi").value = "";
+               document.getElementById("pswi").value = "";
+               //document.getElementById("trail").innerHTML = x;
+               break;
+             }
+             document.getElementById("wrongI").innerHTML = "Id or Password is not correct.";
+           }
+         }
+         
+      </script>
+   </body>
+</html>

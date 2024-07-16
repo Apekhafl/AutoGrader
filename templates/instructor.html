@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Instructor View</h1>
+<head>
+    <title>Instructor View</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;
+        background-image: url("https://c0.wallpaperflare.com/preview/541/284/870/art-backdrop-background-blur.jpg");
+        background-size: cover;
+        }
+        h1{Text-align:Center;
+        font-size:60px;}
+        * {box-sizing: border-box;}
+        h3{
+        left :100px;
+        }
+        #h3code{
+        top: 350px;
+        font-weight: bold;
+        font-size: 25px;
+        }
+        #h3test{
+        top:350px;
+        font-weight: bold;
+        font-size: 25px;
+        }  
+        .border{
+        background-color:#efe4e4;
+        } 
+        .flash_messages{
+        color: black;
+        font-weight: bold;
+        font-size: 25px;
+        }   
+        .bt{
+        color: white;
+        cursor: pointer;
+        }
+        .table_class{
+        margin-left: auto;
+        margin-right: auto;
+        }
+        .bt:hover{
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        #back{
+        background-color: #bf5578;
+        top: 23px;
+        left: 30px;
+        width: 130px;
+        height: 50px;
+        font-size: 16
+        }
+        #code-file{
+        margin-top:100px;
+        top: 147px;
+        left: 800px;
+        font-size: 16;
+        background-color : black;
+        }
+        #test-file{
+        margin-top:100px;
+        top: 270px;
+        left: 800px;
+        font-size: 16;
+        background-color : black;
+        }
+        #upload{
+        background-color: Green;
+        margin-top: 100px; 
+        margin-bottom: 100px;
+        left: 750px;
+        font-size: 20px;
+        }
+        .first_msg {
+        color: black;
+        }
+        .second_msg {
+        color: red;
+        }
+        .upload-btn-wrapper {
+        margin-top: -100px; 
+        left: 10px;
+        position: fixed;
+        cursor: pointer;
+        display: inline-block;
+        }
+        .btn {
+        border: 2px solid gray;
+        color: black;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+        }
+        .btn:hover{
+        border-radius: 0px;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        .multiline {
+        white-space: pre-wrap;
+        position: fixed;
+        font-size: 19px;
+        left:10px;
+        top:200px
+        }
+    </style>
+</head>
+
+<div>
+    <div class="upload-btn-wrapper">
+        <button onclick="location.href='/';" class="btn">Back to Main Page</button>
+    </div>
+   <form method="POST" enctype="multipart/form-data">
+        <div class="multiline">
+        Instructions:
+        1.Upload the assignment file in python code 
+        2.Upload a file named test_cases.txt with 
+            different input cases
+        </div>
+      <table class="table_class">
+         <tr>
+            <td id="h3code">Python Code File:
+               <input type="file" class ="bt" name="code-file" id="code-file" accept=".py">
+            </td>
+         </tr>
+         <tr>
+            <td id ="h3test" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test File:
+               <input align="right" type="file" name="test-file" id="test-file" accept=".txt" class="bt">
+            </td>
+         </tr>
+         <tr>
+            <td align="center"><button type="submit" id = "upload" class="bt">Upload</button></td>
+         </tr>
+      </table>
+   </form>
+</div>
+<div class="border">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash_messages {{ category }}"> 
+                  {{ message|capitalize }} 
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% endblock %}
+</div>
