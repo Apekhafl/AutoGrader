@@ -1,24 +1,19 @@
 Introduction
 
-OrangeHRM is a comprehensive HR management system to suit all business HR needs which can also be customized according to client’s requirements.
+The web application will allow students to submit their functions and receive a grade based on the execution and comparison with a correct implementation provided by the instructor. Instructors can submit unit tests and a correct implementation of the function, and the framework will execute both the student's and instructor's functions, compare the outputs, and assign appropriate grades.
 
-Testing OrangeHRM Portal The goal of this project is to perform comprehensive testing of the login and add user functionality on the OrangeHRM Demo platform. The project will utilize Cucumber framework and page object model design pattern to ensure thorough coverage and efficient test execution. The project will make use of various tools and libraries such as WebDriverManager, Selenium framework, Java and ExtentReports.
+Project Framework: Flask is an open-source web development framework for building web applications in Python.
 
-Project Features
+Project Features:
+•	The files loaded from UI are placed in two separate folders (upload/students, uploads/Instructor)
+•	Python scripts are used for code implementation 
+•	Subprocess command is used to run files that provides the result after running the file.
+•	Check for any issue in the student code
+•	Identified manual test cases for positive and negative scenarios to enhance robustness of the application
 
-Module Testing: The module of OrangeHRM Demo will be tested extensively to ensure its functionality, accuracy, and data integrity.
-Login Functionality Testing: The login functionality of OrangeHRM Demo will be thoroughly tested to ensure secure and seamless access for users.
-BDD Framework: The project will leverage cucumber framework to enhance test coverage and efficiency. Test data will be sourced from cucumber feature files. This approach allows for easy test data management and scalability.
-Browser Compatibility: The project will use WebDriverManager to handle various browsers such as Chrome, Firefox, and Edge. This ensures cross-browser compatibility, allowing the tests to be executed on different browsers without modifying the test scripts.
-Test Automation: The Selenium framework will be utilized for automating web browsers and interacting with the OrangeHRM Demo platform. It provides a powerful set of tools for simulating user actions, validating web elements, and performing assertions.
-Test Execution and Reporting: The Cucumber framework and JUnit will be employed for organizing, executing, and managing the tests. Additionally, the extentreports library will generate an HTML report with screenshots summarizing the test results, making it easy to analyze and share the test outcomes. The Git repository is configured with CI pipeline to fetch code from a GitHub repository, build, and run the automated scripts
-Features
+Flask
+Python
+CSS 
+HTML
 
-Page Object Model
-Cucumber Framework
-JUnit
-Jenkins
-ExtentReports
-Example
-
-HTML Report
+Attachment: 
